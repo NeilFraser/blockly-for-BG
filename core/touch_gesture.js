@@ -322,7 +322,7 @@ Blockly.TouchGesture.prototype.getTouchPoint = function(e) {
     return null;
   }
   return new Blockly.utils.Coordinate(
-      (e.pageX ? e.pageX : e.changedTouches[0].pageX),
-      (e.pageY ? e.pageY : e.changedTouches[0].pageY)
+      (e.changedTouches ? e.changedTouches[0].pageX : e.pageX),
+      (e.changedTouches ? e.changedTouches[0].pageY : e.pageY)
   );
 };
