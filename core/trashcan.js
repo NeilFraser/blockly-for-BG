@@ -416,7 +416,7 @@ Blockly.Trashcan.prototype.hasContents_ = function() {
  * @return {boolean} True if the trashcan contents-flyout is currently open.
  */
 Blockly.Trashcan.prototype.contentsIsOpen = function() {
-  return this.flyout.isVisible();
+  return !!this.flyout && this.flyout.isVisible();
 };
 
 /**
@@ -507,7 +507,7 @@ Blockly.Trashcan.prototype.position = function(metrics, savedPositions) {
 /**
  * Returns the bounding rectangle of the UI element in pixel units relative to
  * the Blockly injection div.
- * @return {?Blockly.utils.Rect} The UI elements’s bounding box. Null if
+ * @return {?Blockly.utils.Rect} The UI elements's bounding box. Null if
  *   bounding box should be ignored by other UI elements.
  */
 Blockly.Trashcan.prototype.getBoundingRectangle = function() {
