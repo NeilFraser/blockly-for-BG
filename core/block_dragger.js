@@ -42,14 +42,14 @@ goog.requireType('Blockly.WorkspaceSvg');
 Blockly.BlockDragger = function(block, workspace) {
   /**
    * The top block in the stack that is being dragged.
-   * @type {!Blockly.BlockSvg}
+   * @type {?Blockly.BlockSvg}
    * @protected
    */
   this.draggingBlock_ = block;
 
   /**
    * The workspace on which the block is being dragged.
-   * @type {!Blockly.WorkspaceSvg}
+   * @type {?Blockly.WorkspaceSvg}
    * @protected
    */
   this.workspace_ = workspace;
@@ -59,8 +59,12 @@ Blockly.BlockDragger = function(block, workspace) {
    * @type {!Blockly.InsertionMarkerManager}
    * @protected
    */
+  try {
   this.draggedConnectionManager_ =
       new Blockly.InsertionMarkerManager(this.draggingBlock_);
+  } catch(e) {
+    throw new Error('BlockDragger 1: ' + e + '\n' + block + ':' + workspace);
+  }
 
   /**
    * Which drag area the mouse pointer is over, if any.
@@ -82,7 +86,11 @@ Blockly.BlockDragger = function(block, workspace) {
    * @type {!Blockly.utils.Coordinate}
    * @protected
    */
+  try {
   this.startXY_ = this.draggingBlock_.getRelativeToSurfaceXY();
+  } catch(e) {
+    throw new Error('BlockDragger 2: ' + e + '\n' + block + ':' + workspace);
+  }
 
   /**
    * A list of all of the icons (comment, warning, and mutator) that are
@@ -91,7 +99,11 @@ Blockly.BlockDragger = function(block, workspace) {
    * @type {Array<!Object>}
    * @protected
    */
+  try {
   this.dragIconData_ = Blockly.BlockDragger.initIconData_(block);
+  } catch(e) {
+    throw new Error('BlockDragger 3: ' + e + '\n' + block + ':' + workspace);
+  }
 };
 
 /**
@@ -99,6 +111,8 @@ Blockly.BlockDragger = function(block, workspace) {
  * @package
  */
 Blockly.BlockDragger.prototype.dispose = function() {
+  this.draggingBlock_ = null;
+  this.workspace_ = null;
   this.dragIconData_.length = 0;
 
   if (this.draggedConnectionManager_) {
@@ -276,7 +290,11 @@ Blockly.BlockDragger.prototype.endDrag = function(e, currentDragDeltaXY) {
     var delta = newValues.delta;
     var newLoc = newValues.newLocation;
   }
-  this.draggingBlock_.moveOffDragSurface(newLoc);
+  try {
+    this.draggingBlock_.moveOffDragSurface(newLoc);
+  } catch(err) {
+    throw new Error(err + ' e:' + e);
+  }
 
   if (this.dragTarget_) {
     this.dragTarget_.onDrop(this.draggingBlock_);
