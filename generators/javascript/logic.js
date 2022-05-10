@@ -111,11 +111,6 @@ Blockly.JavaScript['logic_boolean'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['logic_null'] = function(block) {
-  // Null data type.
-  return ['null', Blockly.JavaScript.ORDER_ATOMIC];
-};
-
 Blockly.JavaScript['logic_ternary'] = function(block) {
   // Ternary operator.
   var value_if = Blockly.JavaScript.valueToCode(block, 'IF',

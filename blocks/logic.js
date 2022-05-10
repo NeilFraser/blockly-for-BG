@@ -186,15 +186,6 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "tooltip": "%{BKY_LOGIC_NEGATE_TOOLTIP}",
     "helpUrl": "%{BKY_LOGIC_NEGATE_HELPURL}"
   },
-  // Block for null data type.
-  {
-    "type": "logic_null",
-    "message0": "%{BKY_LOGIC_NULL}",
-    "output": null,
-    "style": "logic_blocks",
-    "tooltip": "%{BKY_LOGIC_NULL_TOOLTIP}",
-    "helpUrl": "%{BKY_LOGIC_NULL_HELPURL}"
-  },
   // Block for ternary operator.
   {
     "type": "logic_ternary",

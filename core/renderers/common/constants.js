@@ -22,7 +22,6 @@ goog.require('Blockly.utils.Svg');
 goog.require('Blockly.utils.svgPaths');
 goog.require('Blockly.utils.userAgent');
 
-goog.requireType('Blockly.blockRendering.Debug');
 goog.requireType('Blockly.RenderedConnection');
 goog.requireType('Blockly.Theme');
 
@@ -1106,48 +1105,6 @@ Blockly.blockRendering.ConstantProvider.prototype.createDom = function(svg,
       {'d': 'M 0 0 L 10 10 M 10 0 L 0 10', 'stroke': '#cc0'}, disabledPattern);
   this.disabledPatternId = disabledPattern.id;
   this.disabledPattern_ = disabledPattern;
-
-  if (Blockly.blockRendering.Debug) {
-    var debugFilter = Blockly.utils.dom.createSvgElement(
-        Blockly.utils.Svg.FILTER,
-        {
-          'id': 'blocklyDebugFilter' + this.randomIdentifier,
-          'height': '160%',
-          'width': '180%',
-          y: '-30%',
-          x: '-40%'
-        },
-        defs);
-    // Set all gaussian blur pixels to 1 opacity before applying flood
-    var debugComponentTransfer = Blockly.utils.dom.createSvgElement(
-        Blockly.utils.Svg.FECOMPONENTTRANSFER, {
-          'result': 'outBlur'
-        }, debugFilter);
-    Blockly.utils.dom.createSvgElement(
-        Blockly.utils.Svg.FEFUNCA,
-        {
-          'type': 'table', 'tableValues': '0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1'
-        },
-        debugComponentTransfer);
-    // Color the highlight
-    Blockly.utils.dom.createSvgElement(
-        Blockly.utils.Svg.FEFLOOD,
-        {
-          'flood-color': '#ff0000',
-          'flood-opacity': 0.5,
-          'result': 'outColor'
-        },
-        debugFilter);
-    Blockly.utils.dom.createSvgElement(
-        Blockly.utils.Svg.FECOMPOSITE,
-        {
-          'in': 'outColor', 'in2': 'outBlur',
-          'operator': 'in', 'result': 'outGlow'
-        },
-        debugFilter);
-    this.debugFilterId = debugFilter.id;
-    this.debugFilter_ = debugFilter;
-  }
 };
 
 /**

@@ -66,9 +66,6 @@ Blockly.blockRendering.Drawer.prototype.draw = function() {
   if (this.info_.RTL) {
     this.block_.pathObject.flipRTL();
   }
-  if (Blockly.blockRendering.useDebugger) {
-    this.block_.renderingDebugger.drawDebug(this.block_, this.info_);
-  }
   this.recordSizeOnBlock_();
 };
 

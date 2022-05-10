@@ -47,7 +47,6 @@ goog.require('Blockly.utils.Svg');
 goog.require('Blockly.utils.userAgent');
 goog.require('Blockly.Xml');
 
-goog.requireType('Blockly.blockRendering.Debug');
 goog.requireType('Blockly.Comment');
 goog.requireType('Blockly.Connection');
 goog.requireType('Blockly.Field');
@@ -205,13 +204,6 @@ Blockly.BlockSvg.prototype.compose;
  * @type {?function(!Array<!Object>)}
  */
 Blockly.BlockSvg.prototype.customContextMenu;
-
-/**
- * An property used internally to reference the block's rendering debugger.
- * @type {?Blockly.blockRendering.Debug}
- * @package
- */
-Blockly.BlockSvg.prototype.renderingDebugger;
 
 /**
  * Create and initialize the SVG representation of the block.
