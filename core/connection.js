@@ -640,38 +640,3 @@ Blockly.Connection.prototype.getParentInput = function() {
   }
   return parentInput;
 };
-
-/**
- * This method returns a string describing this Connection in developer terms
- * (English only). Intended to on be used in console logs and errors.
- * @return {string} The description.
- */
-Blockly.Connection.prototype.toString = function() {
-  var block = this.sourceBlock_;
-  if (!block) {
-    return 'Orphan Connection';
-  }
-  var msg;
-  if (block.outputConnection == this) {
-    msg = 'Output Connection of ';
-  } else if (block.previousConnection == this) {
-    msg = 'Previous Connection of ';
-  } else if (block.nextConnection == this) {
-    msg = 'Next Connection of ';
-  } else {
-    var parentInput = null;
-    for (var i = 0, input; (input = block.inputList[i]); i++) {
-      if (input.connection == this) {
-        parentInput = input;
-        break;
-      }
-    }
-    if (parentInput) {
-      msg = 'Input "' + parentInput.name + '" connection on ';
-    } else {
-      console.warn('Connection not actually connected to sourceBlock_');
-      return 'Orphan Connection';
-    }
-  }
-  return msg + block.toDevString();
-};

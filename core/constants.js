@@ -168,13 +168,6 @@ Blockly.OPPOSITE_TYPE[Blockly.connectionTypes.PREVIOUS_STATEMENT] =
  * @const {string}
  */
 Blockly.VARIABLE_CATEGORY_NAME = 'VARIABLE';
-/**
- * String for use in the "custom" attribute of a category in toolbox XML.
- * This string indicates that the category should be dynamically populated with
- * variable blocks.
- * @const {string}
- */
-Blockly.VARIABLE_DYNAMIC_CATEGORY_NAME = 'VARIABLE_DYNAMIC';
 
 /**
  * String for use in the "custom" attribute of a category in toolbox XML.

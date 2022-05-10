@@ -43,9 +43,6 @@ Blockly.Themes.Classic.defaultBlockStyles = {
   "variable_blocks": {
     "colourPrimary": "330"
   },
-  "variable_dynamic_blocks": {
-    "colourPrimary": "310"
-  },
   "hat_blocks": {
     "colourPrimary": "330",
     "hat": "cap"
@@ -76,9 +73,6 @@ Blockly.Themes.Classic.categoryStyles = {
   },
   "variable_category": {
     "colour": "330"
-  },
-  "variable_dynamic_category": {
-    "colour": "310"
   }
 };
 

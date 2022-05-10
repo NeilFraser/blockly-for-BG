@@ -23,13 +23,6 @@ goog.requireType('Blockly.Theme');
 
 
 /**
- * Whether or not the debugger is turned on.
- * @type {boolean}
- * @package
- */
-Blockly.blockRendering.useDebugger = false;
-
-/**
  * Registers a new renderer.
  * @param {string} name The name of the renderer.
  * @param {!Function} rendererClass The new renderer class
@@ -47,21 +40,6 @@ Blockly.blockRendering.register = function(name, rendererClass) {
  */
 Blockly.blockRendering.unregister = function(name) {
   Blockly.registry.unregister(Blockly.registry.Type.RENDERER, name);
-};
-/**
- * Turn on the blocks debugger.
- * @package
- */
-Blockly.blockRendering.startDebugger = function() {
-  Blockly.blockRendering.useDebugger = true;
-};
-
-/**
- * Turn off the blocks debugger.
- * @package
- */
-Blockly.blockRendering.stopDebugger = function() {
-  Blockly.blockRendering.useDebugger = false;
 };
 
 /**
