@@ -179,7 +179,6 @@ Blockly.Mutator.prototype.createEditor_ = function() {
         'parentWorkspace': this.block_.workspace,
         'media': this.block_.workspace.options.pathToMedia,
         'rtl': this.block_.RTL,
-        'horizontalLayout': false,
         'renderer': this.block_.workspace.options.renderer,
         'rendererOverrides': this.block_.workspace.options.rendererOverrides
       }));

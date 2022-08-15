@@ -463,9 +463,6 @@ Blockly.checkBlockColourConstants = function() {
       'VARIABLES_HUE', ['Blocks', 'variables', 'HUE'], undefined);
   Blockly.checkBlockColourConstant_(
       'VARIABLES_HUE', ['Constants', 'Variables', 'HUE'], 330);
-  // Blockly.Blocks.variables_dynamic.HUE never existed.
-  Blockly.checkBlockColourConstant_(
-      'VARIABLES_DYNAMIC_HUE', ['Constants', 'VariablesDynamic', 'HUE'], 310);
   Blockly.checkBlockColourConstant_(
       'PROCEDURES_HUE', ['Blocks', 'procedures', 'HUE'], undefined);
   // Blockly.Constants.Procedures.HUE never existed.

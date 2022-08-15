@@ -65,13 +65,6 @@ Blockly.IToolbox.prototype.getFlyout;
 Blockly.IToolbox.prototype.getWorkspace;
 
 /**
- * Gets whether or not the toolbox is horizontal.
- * @return {boolean} True if the toolbox is horizontal, false if the toolbox is
- *     vertical.
- */
-Blockly.IToolbox.prototype.isHorizontal;
-
-/**
  * Positions the toolbox based on whether it is a horizontal toolbox and whether
  * the workspace is in rtl.
  * @return {void}

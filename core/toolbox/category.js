@@ -296,10 +296,7 @@ Blockly.ToolboxCategory.prototype.createRowContentsContainer_ = function() {
  */
 Blockly.ToolboxCategory.prototype.createIconDom_ = function() {
   var toolboxIcon = document.createElement('span');
-  if (!this.parentToolbox_.isHorizontal()) {
-    Blockly.utils.dom.addClass(toolboxIcon, this.cssConfig_['icon']);
-  }
-
+  Blockly.utils.dom.addClass(toolboxIcon, this.cssConfig_['icon']);
   toolboxIcon.style.display = 'inline-block';
   return toolboxIcon;
 };

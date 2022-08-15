@@ -46,8 +46,6 @@ Blockly.Workspace = function(opt_options) {
       new Blockly.Options(/** @type {!Blockly.BlocklyOptions} */ ({}));
   /** @type {boolean} */
   this.RTL = !!this.options.RTL;
-  /** @type {boolean} */
-  this.horizontalLayout = !!this.options.horizontalLayout;
   /** @type {Blockly.utils.toolbox.Position} */
   this.toolboxPosition = this.options.toolboxPosition;
 

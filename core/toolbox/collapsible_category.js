@@ -176,11 +176,8 @@ Blockly.CollapsibleToolboxCategory.prototype.createDom_ = function() {
  */
 Blockly.CollapsibleToolboxCategory.prototype.createIconDom_ = function() {
   var toolboxIcon = document.createElement('span');
-  if (!this.parentToolbox_.isHorizontal()) {
-    Blockly.utils.dom.addClass(toolboxIcon, this.cssConfig_['icon']);
-    toolboxIcon.style.visibility = 'visible';
-  }
-
+  Blockly.utils.dom.addClass(toolboxIcon, this.cssConfig_['icon']);
+  toolboxIcon.style.visibility = 'visible';
   toolboxIcon.style.display = 'inline-block';
   return toolboxIcon;
 };

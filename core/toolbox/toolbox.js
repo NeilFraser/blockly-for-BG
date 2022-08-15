@@ -81,13 +81,6 @@ Blockly.Toolbox = function(workspace) {
   this.toolboxDef_ = workspace.options.languageTree || {'contents': []};
 
   /**
-   * Whether the toolbox should be laid out horizontally.
-   * @type {boolean}
-   * @private
-   */
-  this.horizontalLayout_ = workspace.options.horizontalLayout;
-
-  /**
    * The html container for the toolbox.
    * @type {?Element}
    */
@@ -249,7 +242,7 @@ Blockly.Toolbox.prototype.createDom_ = function(workspace) {
  */
 Blockly.Toolbox.prototype.createContainer_ = function() {
   var toolboxContainer = document.createElement('div');
-  toolboxContainer.setAttribute('layout', this.isHorizontal() ? 'h' : 'v');
+  toolboxContainer.setAttribute('layout', 'v');
   Blockly.utils.dom.addClass(toolboxContainer, 'blocklyToolboxDiv');
   Blockly.utils.dom.addClass(toolboxContainer, 'blocklyNonSelectable');
   toolboxContainer.setAttribute('dir', this.RTL ? 'RTL' : 'LTR');
@@ -264,9 +257,6 @@ Blockly.Toolbox.prototype.createContainer_ = function() {
 Blockly.Toolbox.prototype.createContentsContainer_ = function() {
   var contentsContainer = document.createElement('div');
   Blockly.utils.dom.addClass(contentsContainer, 'blocklyToolboxContents');
-  if (this.isHorizontal()) {
-    contentsContainer.style.flexDirection = 'row';
-  }
   return contentsContainer;
 };
 
@@ -375,7 +365,6 @@ Blockly.Toolbox.prototype.createFlyout_ = function() {
         'parentWorkspace': workspace,
         'rtl': workspace.RTL,
         'oneBasedIndex': workspace.options.oneBasedIndex,
-        'horizontalLayout': workspace.horizontalLayout,
         'renderer': workspace.options.renderer,
         'rendererOverrides': workspace.options.rendererOverrides,
         'move': {
@@ -386,15 +375,9 @@ Blockly.Toolbox.prototype.createFlyout_ = function() {
   // be either 0 or 1, so set it after.
   workspaceOptions.toolboxPosition = workspace.options.toolboxPosition;
   var FlyoutClass = null;
-  if (workspace.horizontalLayout) {
-    FlyoutClass = Blockly.registry.getClassFromOptions(
-        Blockly.registry.Type.FLYOUTS_HORIZONTAL_TOOLBOX, workspace.options,
-        true);
-  } else {
-    FlyoutClass = Blockly.registry.getClassFromOptions(
-        Blockly.registry.Type.FLYOUTS_VERTICAL_TOOLBOX, workspace.options,
-        true);
-  }
+  FlyoutClass = Blockly.registry.getClassFromOptions(
+      Blockly.registry.Type.FLYOUTS_VERTICAL_TOOLBOX, workspace.options,
+      true);
   return new FlyoutClass(workspaceOptions);
 };
 
@@ -712,16 +695,6 @@ Blockly.Toolbox.prototype.getPreviouslySelectedItem = function() {
 };
 
 /**
- * Gets whether or not the toolbox is horizontal.
- * @return {boolean} True if the toolbox is horizontal, false if the toolbox is
- *     vertical.
- * @public
- */
-Blockly.Toolbox.prototype.isHorizontal = function() {
-  return this.horizontalLayout_;
-};
-
-/**
  * Positions the toolbox based on whether it is a horizontal toolbox and whether
  * the workspace is in rtl.
  * @public
@@ -734,27 +707,14 @@ Blockly.Toolbox.prototype.position = function() {
     return;
   }
 
-  if (this.horizontalLayout_) {
+  if (this.toolboxPosition == Blockly.utils.toolbox.Position.RIGHT) {
+    toolboxDiv.style.right = '0';
+  } else {  // Left
     toolboxDiv.style.left = '0';
-    toolboxDiv.style.height = 'auto';
-    toolboxDiv.style.width = '100%';
-    this.height_ = toolboxDiv.offsetHeight;
-    this.width_ = workspaceMetrics.viewWidth;
-    if (this.toolboxPosition == Blockly.utils.toolbox.Position.TOP) {
-      toolboxDiv.style.top = '0';
-    } else {  // Bottom
-      toolboxDiv.style.bottom = '0';
-    }
-  } else {
-    if (this.toolboxPosition == Blockly.utils.toolbox.Position.RIGHT) {
-      toolboxDiv.style.right = '0';
-    } else {  // Left
-      toolboxDiv.style.left = '0';
-    }
-    toolboxDiv.style.height = '100%';
-    this.width_ = toolboxDiv.offsetWidth;
-    this.height_ = workspaceMetrics.viewHeight;
   }
+  toolboxDiv.style.height = '100%';
+  this.width_ = toolboxDiv.offsetWidth;
+  this.height_ = workspaceMetrics.viewHeight;
   this.flyout_.position();
 };
 /**

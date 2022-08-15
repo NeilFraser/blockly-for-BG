@@ -1044,7 +1044,6 @@ Blockly.WorkspaceSvg.prototype.addFlyout = function(tagName) {
         'parentWorkspace': this,
         'rtl': this.RTL,
         'oneBasedIndex': this.options.oneBasedIndex,
-        'horizontalLayout': this.horizontalLayout,
         'renderer': this.options.renderer,
         'rendererOverrides': this.options.rendererOverrides,
         'move': {
@@ -1052,15 +1051,9 @@ Blockly.WorkspaceSvg.prototype.addFlyout = function(tagName) {
         }
       }));
   workspaceOptions.toolboxPosition = this.options.toolboxPosition;
-  if (this.horizontalLayout) {
-    var HorizontalFlyout = Blockly.registry.getClassFromOptions(
-        Blockly.registry.Type.FLYOUTS_HORIZONTAL_TOOLBOX, this.options, true);
-    this.flyout_ = new HorizontalFlyout(workspaceOptions);
-  } else {
-    var VerticalFlyout = Blockly.registry.getClassFromOptions(
-        Blockly.registry.Type.FLYOUTS_VERTICAL_TOOLBOX, this.options, true);
-    this.flyout_ = new VerticalFlyout(workspaceOptions);
-  }
+  var VerticalFlyout = Blockly.registry.getClassFromOptions(
+      Blockly.registry.Type.FLYOUTS_VERTICAL_TOOLBOX, this.options, true);
+  this.flyout_ = new VerticalFlyout(workspaceOptions);
   this.flyout_.autoClose = false;
   this.flyout_.getWorkspace().setVisible(true);
 
@@ -2080,15 +2073,9 @@ Blockly.WorkspaceSvg.prototype.zoomToFit = function() {
     // block size because the blocks we want to resize include the blocks in
     // the flyout, and the area we want to fit them includes the portion of
     // the workspace that is behind the flyout.
-    if (this.horizontalLayout) {
-      workspaceHeight += this.flyout_.getHeight();
-      // Convert from pixels to workspace coordinates.
-      blocksHeight += this.flyout_.getHeight() / this.scale;
-    } else {
-      workspaceWidth += this.flyout_.getWidth();
-      // Convert from pixels to workspace coordinates.
-      blocksWidth += this.flyout_.getWidth() / this.scale;
-    }
+    workspaceWidth += this.flyout_.getWidth();
+    // Convert from pixels to workspace coordinates.
+    blocksWidth += this.flyout_.getWidth() / this.scale;
   }
 
   // Scale Units: (pixels / workspaceUnit)

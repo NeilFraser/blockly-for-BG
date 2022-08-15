@@ -94,24 +94,14 @@ Blockly.Trashcan = function(workspace) {
           'scrollbars': true,
         }
       }));
-  // Create vertical or horizontal flyout.
-  if (this.workspace_.horizontalLayout) {
-    flyoutWorkspaceOptions.toolboxPosition =
-        this.workspace_.toolboxPosition == Blockly.utils.toolbox.Position.TOP ?
-        Blockly.utils.toolbox.Position.BOTTOM : Blockly.utils.toolbox.Position.TOP;
-    var HorizontalFlyout = Blockly.registry.getClassFromOptions(
-        Blockly.registry.Type.FLYOUTS_HORIZONTAL_TOOLBOX,
-        this.workspace_.options, true);
-    this.flyout = new HorizontalFlyout(flyoutWorkspaceOptions);
-  } else {
-    flyoutWorkspaceOptions.toolboxPosition =
-      this.workspace_.toolboxPosition == Blockly.utils.toolbox.Position.RIGHT ?
-        Blockly.utils.toolbox.Position.LEFT : Blockly.utils.toolbox.Position.RIGHT;
-    var VerticalFlyout = Blockly.registry.getClassFromOptions(
-        Blockly.registry.Type.FLYOUTS_VERTICAL_TOOLBOX,
-        this.workspace_.options, true);
-    this.flyout = new VerticalFlyout(flyoutWorkspaceOptions);
-  }
+  // Create vertical flyout.
+  flyoutWorkspaceOptions.toolboxPosition =
+    this.workspace_.toolboxPosition == Blockly.utils.toolbox.Position.RIGHT ?
+      Blockly.utils.toolbox.Position.LEFT : Blockly.utils.toolbox.Position.RIGHT;
+  var VerticalFlyout = Blockly.registry.getClassFromOptions(
+      Blockly.registry.Type.FLYOUTS_VERTICAL_TOOLBOX,
+      this.workspace_.options, true);
+  this.flyout = new VerticalFlyout(flyoutWorkspaceOptions);
   this.workspace_.addChangeListener(this.onDelete_.bind(this));
 };
 Blockly.utils.object.inherits(Blockly.Trashcan, Blockly.DeleteArea);
@@ -614,8 +604,7 @@ Blockly.Trashcan.prototype.animateLid_ = function() {
  */
 Blockly.Trashcan.prototype.setLidAngle_ = function(lidAngle) {
   var openAtRight =
-      this.workspace_.toolboxPosition == Blockly.utils.toolbox.Position.RIGHT ||
-      (this.workspace_.horizontalLayout && this.workspace_.RTL);
+      this.workspace_.toolboxPosition == Blockly.utils.toolbox.Position.RIGHT;
   this.svgLid_.setAttribute('transform', 'rotate(' +
       (openAtRight ? -lidAngle : lidAngle) + ',' +
       (openAtRight ? 4 : this.WIDTH_ - 4) + ',' +

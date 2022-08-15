@@ -72,22 +72,13 @@ Blockly.Options = function(options) {
     }
   }
   var rtl = !!options['rtl'];
-  var horizontalLayout = options['horizontalLayout'];
-  if (horizontalLayout === undefined) {
-    horizontalLayout = false;
-  }
   var toolboxAtStart = options['toolboxPosition'];
   toolboxAtStart = toolboxAtStart !== 'end';
 
   /** @type {!Blockly.utils.toolbox.Position} */
   var toolboxPosition;
-  if (horizontalLayout) {
-    toolboxPosition = toolboxAtStart ?
-        Blockly.utils.toolbox.Position.TOP : Blockly.utils.toolbox.Position.BOTTOM;
-  } else {
-    toolboxPosition = (toolboxAtStart == rtl) ?
-        Blockly.utils.toolbox.Position.RIGHT : Blockly.utils.toolbox.Position.LEFT;
-  }
+  toolboxPosition = (toolboxAtStart == rtl) ?
+      Blockly.utils.toolbox.Position.RIGHT : Blockly.utils.toolbox.Position.LEFT;
 
   var hasCss = options['css'];
   if (hasCss === undefined) {
@@ -141,8 +132,6 @@ Blockly.Options = function(options) {
   this.hasSounds = hasSounds;
   /** @type {boolean} */
   this.hasCss = hasCss;
-  /** @type {boolean} */
-  this.horizontalLayout = horizontalLayout;
   /** @type {?Blockly.utils.toolbox.ToolboxInfo} */
   this.languageTree = toolboxJsonDef;
   /** @type {!Blockly.Options.GridOptions} */

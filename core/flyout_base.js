@@ -85,13 +85,6 @@ Blockly.Flyout = function(workspaceOptions) {
   this.RTL = !!workspaceOptions.RTL;
 
   /**
-   * Whether the flyout should be laid out horizontally or not.
-   * @type {boolean}
-   * @package
-   */
-  this.horizontalLayout = false;
-
-  /**
    * Position of the toolbox and flyout relative to the workspace.
    * @type {number}
    * @protected
@@ -282,7 +275,7 @@ Blockly.Flyout.prototype.init = function(targetWorkspace) {
   this.workspace_.targetWorkspace = targetWorkspace;
 
   this.workspace_.scrollbar = new Blockly.ScrollbarPair(
-      this.workspace_, this.horizontalLayout, !this.horizontalLayout,
+      this.workspace_, false, true,
       'blocklyFlyoutScrollbar', this.SCROLLBAR_MARGIN);
 
   this.hide();
@@ -540,11 +533,7 @@ Blockly.Flyout.prototype.show = function(flyoutDef) {
   this.listeners_.push(Blockly.browserEvents.conditionalBind(
       this.svgBackground_, 'mouseover', this, deselectAll));
 
-  if (this.horizontalLayout) {
-    this.height_ = 0;
-  } else {
-    this.width_ = 0;
-  }
+  this.width_ = 0;
   this.workspace_.setResizesEnabled(true);
   this.reflow();
 
@@ -570,7 +559,7 @@ Blockly.Flyout.prototype.createFlyoutInfo_ = function(parsedContent) {
   var contents = [];
   var gaps = [];
   this.permanentlyDisabled_.length = 0;
-  var defaultGap = this.horizontalLayout ? this.GAP_X : this.GAP_Y;
+  var defaultGap = this.GAP_Y;
   for (var i = 0, contentInfo; (contentInfo = parsedContent[i]); i++) {
 
     if (contentInfo['custom']) {

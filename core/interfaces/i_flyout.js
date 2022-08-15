@@ -29,12 +29,6 @@ goog.requireType('Blockly.WorkspaceSvg');
 Blockly.IFlyout = function() {};
 
 /**
- * Whether the flyout is laid out horizontally or not.
- * @type {boolean}
- */
-Blockly.IFlyout.prototype.horizontalLayout;
-
-/**
  * Is RTL vs LTR.
  * @type {boolean}
  */
