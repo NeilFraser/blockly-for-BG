@@ -76,38 +76,6 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "mutator": "controls_if_mutator",
     "extensions": ["controls_if_tooltip"]
   },
-  // If/else block that does not use a mutator.
-  {
-    "type": "controls_ifelse",
-    "message0": "%{BKY_CONTROLS_IF_MSG_IF} %1",
-    "args0": [
-      {
-        "type": "input_value",
-        "name": "IF0",
-        "check": "Boolean"
-      }
-    ],
-    "message1": "%{BKY_CONTROLS_IF_MSG_THEN} %1",
-    "args1": [
-      {
-        "type": "input_statement",
-        "name": "DO0"
-      }
-    ],
-    "message2": "%{BKY_CONTROLS_IF_MSG_ELSE} %1",
-    "args2": [
-      {
-        "type": "input_statement",
-        "name": "ELSE"
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "style": "logic_blocks",
-    "tooltip": "%{BKYCONTROLS_IF_TOOLTIP_2}",
-    "helpUrl": "%{BKY_CONTROLS_IF_HELPURL}",
-    "extensions": ["controls_if_tooltip"]
-  },
   // Block for comparison operator.
   {
     "type": "logic_compare",
@@ -122,11 +90,11 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         "name": "OP",
         "options": [
           ["=", "EQ"],
-          ["\u2260", "NEQ"],
+          ["≠", "NEQ"],
           ["\u200F<", "LT"],
-          ["\u200F\u2264", "LTE"],
+          ["\u200F≤", "LTE"],
           ["\u200F>", "GT"],
-          ["\u200F\u2265", "GTE"]
+          ["\u200F≥", "GTE"]
         ]
       },
       {

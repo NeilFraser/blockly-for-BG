@@ -247,39 +247,6 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "tooltip": "%{BKY_MATH_ROUND_TOOLTIP}"
   },
 
-  // Block for evaluating a list of numbers to return sum, average, min, max,
-  // etc.  Some functions also work on text (min, max, mode, median).
-  {
-    "type": "math_on_list",
-    "message0": "%1 %2",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "OP",
-        "options": [
-          ["%{BKY_MATH_ONLIST_OPERATOR_SUM}", "SUM"],
-          ["%{BKY_MATH_ONLIST_OPERATOR_MIN}", "MIN"],
-          ["%{BKY_MATH_ONLIST_OPERATOR_MAX}", "MAX"],
-          ["%{BKY_MATH_ONLIST_OPERATOR_AVERAGE}", "AVERAGE"],
-          ["%{BKY_MATH_ONLIST_OPERATOR_MEDIAN}", "MEDIAN"],
-          ["%{BKY_MATH_ONLIST_OPERATOR_MODE}", "MODE"],
-          ["%{BKY_MATH_ONLIST_OPERATOR_STD_DEV}", "STD_DEV"],
-          ["%{BKY_MATH_ONLIST_OPERATOR_RANDOM}", "RANDOM"]
-        ]
-      },
-      {
-        "type": "input_value",
-        "name": "LIST",
-        "check": "Array"
-      }
-    ],
-    "output": "Number",
-    "style": "math_blocks",
-    "helpUrl": "%{BKY_MATH_ONLIST_HELPURL}",
-    "mutator": "math_modes_of_list_mutator",
-    "extensions": ["math_op_tooltip"]
-  },
-
   // Block for remainder of a division.
   {
     "type": "math_modulo",
@@ -354,7 +321,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "helpUrl": "%{BKY_MATH_RANDOM_INT_HELPURL}"
   },
 
-  // Block for random integer between [X] and [Y].
+  // Block for random fraction between 0 and 1.
   {
     "type": "math_random_float",
     "message0": "%{BKY_MATH_RANDOM_FLOAT_TITLE_RANDOM}",

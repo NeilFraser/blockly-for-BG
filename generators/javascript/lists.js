@@ -355,30 +355,6 @@ Blockly.JavaScript['lists_sort'] = function(block) {
       Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
-Blockly.JavaScript['lists_split'] = function(block) {
-  // Block for splitting text into a list, or joining a list into text.
-  var input = Blockly.JavaScript.valueToCode(block, 'INPUT',
-      Blockly.JavaScript.ORDER_MEMBER);
-  var delimiter = Blockly.JavaScript.valueToCode(block, 'DELIM',
-      Blockly.JavaScript.ORDER_NONE) || '\'\'';
-  var mode = block.getFieldValue('MODE');
-  if (mode == 'SPLIT') {
-    if (!input) {
-      input = '\'\'';
-    }
-    var functionName = 'split';
-  } else if (mode == 'JOIN') {
-    if (!input) {
-      input = '[]';
-    }
-    var functionName = 'join';
-  } else {
-    throw Error('Unknown mode: ' + mode);
-  }
-  var code = input + '.' + functionName + '(' + delimiter + ')';
-  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
-};
-
 Blockly.JavaScript['lists_reverse'] = function(block) {
   // Block for reversing a list.
   var list = Blockly.JavaScript.valueToCode(block, 'LIST',
