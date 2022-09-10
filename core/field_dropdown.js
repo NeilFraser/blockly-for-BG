@@ -47,6 +47,8 @@ goog.require('Blockly.utils.userAgent');
 Blockly.FieldDropdown = function(menuGenerator, opt_validator, opt_config) {
   if (typeof menuGenerator != 'function') {
     Blockly.FieldDropdown.validateOptions_(menuGenerator);
+    // Deep copy the option structure so it doesn't change.
+    menuGenerator = JSON.parse(JSON.stringify(menuGenerator));
   }
 
   /**
