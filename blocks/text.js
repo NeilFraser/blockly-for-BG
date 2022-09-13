@@ -14,6 +14,7 @@ goog.provide('Blockly.Constants.Text');
 
 goog.require('Blockly');
 goog.require('Blockly.Blocks');
+goog.require('Blockly.Extensions');
 goog.require('Blockly.FieldImage');
 goog.require('Blockly.FieldTextInput');
 
@@ -29,7 +30,7 @@ Blockly.defineBlocksWithJsonArray([
       "text": ""
     }],
     "output": "String",
-    "style": "text_blocks",
+    "colour": "%{BKY_TEXTS_HUE}",
     "helpUrl": "%{BKY_TEXT_TEXT_HELPURL}",
     "tooltip": "%{BKY_TEXT_TEXT_TOOLTIP}",
     "extensions": [

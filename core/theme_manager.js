@@ -99,17 +99,6 @@ Blockly.ThemeManager.prototype.setTheme = function(theme) {
     workspace.refreshTheme();
   }
 
-  // Refresh all registered Blockly UI components.
-  for (var i = 0, keys = Object.keys(this.componentDB_),
-    key; (key = keys[i]); i++) {
-    for (var j = 0, component; (component = this.componentDB_[key][j]); j++) {
-      var element = component.element;
-      var propertyName = component.propertyName;
-      var style = this.theme_ && this.theme_.getComponentStyle(key);
-      element.style[propertyName] = style || '';
-    }
-  }
-
   Blockly.hideChaff();
 };
 
@@ -158,8 +147,7 @@ Blockly.ThemeManager.prototype.subscribe = function(element, componentName,
   });
 
   // Initialize the element with its corresponding theme style.
-  var style = this.theme_ && this.theme_.getComponentStyle(componentName);
-  element.style[propertyName] = style || '';
+  element.style[propertyName] = '';
 };
 
 /**

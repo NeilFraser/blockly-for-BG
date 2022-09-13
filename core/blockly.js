@@ -43,7 +43,6 @@ goog.require('Blockly.Tooltip');
 goog.require('Blockly.Touch');
 goog.require('Blockly.utils');
 goog.require('Blockly.utils.colour');
-goog.require('Blockly.utils.deprecation');
 goog.require('Blockly.utils.Size');
 goog.require('Blockly.utils.toolbox');
 /** @suppress {extraRequire} */
@@ -124,24 +123,6 @@ Blockly.cache3dSupported_ = null;
  * @package
  */
 Blockly.parentContainer = null;
-
-/**
- * Returns the dimensions of the specified SVG image.
- * @param {!SVGElement} svg SVG image.
- * @return {!Blockly.utils.Size} Contains width and height properties.
- * @deprecated Use workspace.setCachedParentSvgSize. (2021 March 5)
- */
-Blockly.svgSize = function(svg) {
-  // When removing this function, remove svg.cachedWidth_ and svg.cachedHeight_
-  // from setCachedParentSvgSize.
-  Blockly.utils.deprecation.warn(
-      'Blockly.svgSize',
-      'March 2021',
-      'March 2022',
-      'workspace.getCachedParentSvgSize');
-  svg = /** @type {?} */ (svg);
-  return new Blockly.utils.Size(svg.cachedWidth_, svg.cachedHeight_);
-};
 
 /**
  * Size the workspace when the contents change.  This also updates
@@ -569,27 +550,3 @@ Blockly.PREVIOUS_STATEMENT = Blockly.connectionTypes.PREVIOUS_STATEMENT;
  * @see Blockly.inputTypes.DUMMY_INPUT
  */
 Blockly.DUMMY_INPUT = Blockly.inputTypes.DUMMY;
-
-/**
- * Aliases for toolbox positions.
- */
-
-/**
- * @see Blockly.utils.toolbox.Position.TOP
- */
-Blockly.TOOLBOX_AT_TOP = Blockly.utils.toolbox.Position.TOP;
-
-/**
- * @see Blockly.utils.toolbox.Position.BOTTOM
- */
-Blockly.TOOLBOX_AT_BOTTOM = Blockly.utils.toolbox.Position.BOTTOM;
-
-/**
- * @see Blockly.utils.toolbox.Position.LEFT
- */
-Blockly.TOOLBOX_AT_LEFT = Blockly.utils.toolbox.Position.LEFT;
-
-/**
- * @see Blockly.utils.toolbox.Position.RIGHT
- */
-Blockly.TOOLBOX_AT_RIGHT = Blockly.utils.toolbox.Position.RIGHT;

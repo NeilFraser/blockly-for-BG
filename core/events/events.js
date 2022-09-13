@@ -171,30 +171,6 @@ Blockly.Events.THEME_CHANGE = 'theme_change';
 Blockly.Events.VIEWPORT_CHANGE = 'viewport_change';
 
 /**
- * Name of event that creates a comment.
- * @const
- */
-Blockly.Events.COMMENT_CREATE = 'comment_create';
-
-/**
- * Name of event that deletes a comment.
- * @const
- */
-Blockly.Events.COMMENT_DELETE = 'comment_delete';
-
-/**
- * Name of event that changes a comment.
- * @const
- */
-Blockly.Events.COMMENT_CHANGE = 'comment_change';
-
-/**
- * Name of event that moves a comment.
- * @const
- */
-Blockly.Events.COMMENT_MOVE = 'comment_move';
-
-/**
  * Name of event that records a workspace load.
  */
 Blockly.Events.FINISHED_LOADING = 'finished_loading';
@@ -205,8 +181,7 @@ Blockly.Events.FINISHED_LOADING = 'finished_loading';
  *
  * Not to be confused with bumping so that disconnected connections do not
  * appear connected.
- * @typedef {!Blockly.Events.BlockCreate|!Blockly.Events.BlockMove|
- * !Blockly.Events.CommentCreate|!Blockly.Events.CommentMove}
+ * @typedef {!Blockly.Events.BlockCreate|!Blockly.Events.BlockMove}
  */
 Blockly.Events.BumpEvent;
 
@@ -220,9 +195,7 @@ Blockly.Events.BumpEvent;
  */
 Blockly.Events.BUMP_EVENTS = [
   Blockly.Events.BLOCK_CREATE,
-  Blockly.Events.BLOCK_MOVE,
-  Blockly.Events.COMMENT_CREATE,
-  Blockly.Events.COMMENT_MOVE
+  Blockly.Events.BLOCK_MOVE
 ];
 
 /**

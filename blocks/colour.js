@@ -24,12 +24,6 @@ goog.require('Blockly.FieldColour');
 goog.require('Blockly.FieldLabel');
 
 
-/**
- * Unused constant for the common HSV hue for all blocks in this category.
- * @deprecated Use Blockly.Msg['COLOUR_HUE']. (2018 April 5)
- */
-Blockly.Constants.Colour.HUE = 20;
-
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for colour picker.
   {
@@ -44,7 +38,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "output": "Colour",
     "helpUrl": "%{BKY_COLOUR_PICKER_HELPURL}",
-    "style": "colour_blocks",
+    "colour": "%{BKY_COLOUR_HUE}",
     "tooltip": "%{BKY_COLOUR_PICKER_TOOLTIP}",
     "extensions": ["parent_tooltip_when_inline"]
   },
@@ -55,7 +49,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "message0": "%{BKY_COLOUR_RANDOM_TITLE}",
     "output": "Colour",
     "helpUrl": "%{BKY_COLOUR_RANDOM_HELPURL}",
-    "style": "colour_blocks",
+    "colour": "%{BKY_COLOUR_HUE}",
     "tooltip": "%{BKY_COLOUR_RANDOM_TOOLTIP}"
   },
 
@@ -85,7 +79,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "output": "Colour",
     "helpUrl": "%{BKY_COLOUR_RGB_HELPURL}",
-    "style": "colour_blocks",
+    "colour": "%{BKY_COLOUR_HUE}",
     "tooltip": "%{BKY_COLOUR_RGB_TOOLTIP}"
   },
 
@@ -116,7 +110,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "output": "Colour",
     "helpUrl": "%{BKY_COLOUR_BLEND_HELPURL}",
-    "style": "colour_blocks",
+    "colour": "%{BKY_COLOUR_HUE}",
     "tooltip": "%{BKY_COLOUR_BLEND_TOOLTIP}"
   }
 ]);  // END JSON EXTRACT (Do not delete this comment.)

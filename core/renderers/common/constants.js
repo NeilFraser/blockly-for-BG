@@ -591,46 +591,15 @@ Blockly.blockRendering.ConstantProvider.prototype.setTheme = function(
    */
   this.blockStyles = Object.create(null);
 
-  var blockStyles = theme.blockStyles;
-  for (var key in blockStyles) {
-    this.blockStyles[key] = this.validatedBlockStyle_(blockStyles[key]);
-  }
-
-  this.setDynamicProperties_(theme);
+  this.setFontConstants_();
 };
 
 /**
- * Sets dynamic properties that depend on other values or theme properties.
- * @param {!Blockly.Theme} theme The current workspace theme.
- * @protected
- */
-Blockly.blockRendering.ConstantProvider.prototype.setDynamicProperties_ =
-    function(theme) {
-    /* eslint-disable indent */
-  this.setFontConstants_(theme);
-  this.setComponentConstants_(theme);
-
-  this.ADD_START_HATS = theme.startHats != null ? theme.startHats :
-      this.ADD_START_HATS;
-}; /* eslint-enable indent */
-
-/**
  * Set constants related to fonts.
- * @param {!Blockly.Theme} theme The current workspace theme.
  * @protected
  */
-Blockly.blockRendering.ConstantProvider.prototype.setFontConstants_ = function(
-    theme) {
-  this.FIELD_TEXT_FONTFAMILY =
-      theme.fontStyle && theme.fontStyle['family'] != undefined ?
-      theme.fontStyle['family'] : this.FIELD_TEXT_FONTFAMILY;
-  this.FIELD_TEXT_FONTWEIGHT =
-      theme.fontStyle && theme.fontStyle['weight'] != undefined ?
-      theme.fontStyle['weight'] : this.FIELD_TEXT_FONTWEIGHT;
-  this.FIELD_TEXT_FONTSIZE =
-      theme.fontStyle && theme.fontStyle['size'] != undefined ?
-      theme.fontStyle['size'] : this.FIELD_TEXT_FONTSIZE;
-
+Blockly.blockRendering.ConstantProvider.prototype.setFontConstants_ =
+    function() {
   var fontMetrics = Blockly.utils.dom.measureFontMetrics('Hg',
       this.FIELD_TEXT_FONTSIZE + 'pt',
       this.FIELD_TEXT_FONTWEIGHT,
@@ -639,26 +608,6 @@ Blockly.blockRendering.ConstantProvider.prototype.setFontConstants_ = function(
   this.FIELD_TEXT_HEIGHT = fontMetrics.height;
   this.FIELD_TEXT_BASELINE = fontMetrics.baseline;
 };
-
-/**
- * Set constants from a theme's component styles.
- * @param {!Blockly.Theme} theme The current workspace theme.
- * @protected
- */
-Blockly.blockRendering.ConstantProvider.prototype.setComponentConstants_ =
-    function(theme) {
-    /* eslint-disable indent */
-  this.CURSOR_COLOUR = theme.getComponentStyle('cursorColour') ||
-    this.CURSOR_COLOUR;
-  this.MARKER_COLOUR = theme.getComponentStyle('markerColour') ||
-    this.MARKER_COLOUR;
-  this.INSERTION_MARKER_COLOUR =
-    theme.getComponentStyle('insertionMarkerColour') ||
-    this.INSERTION_MARKER_COLOUR;
-  this.INSERTION_MARKER_OPACITY =
-    Number(theme.getComponentStyle('insertionMarkerOpacity')) ||
-    this.INSERTION_MARKER_OPACITY;
-}; /* eslint-enable indent */
 
 /**
  * Get or create a block style based on a single colour value.  Generate a name

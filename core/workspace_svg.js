@@ -197,8 +197,7 @@ Blockly.WorkspaceSvg = function(
    */
   this.themeManager_ = this.options.parentWorkspace ?
       this.options.parentWorkspace.getThemeManager() :
-      new Blockly.ThemeManager(this,
-          this.options.theme || Blockly.Themes.Classic);
+      new Blockly.ThemeManager(this, Blockly.Themes.Classic);
   this.themeManager_.subscribeWorkspace(this);
 
   /**
@@ -1184,13 +1183,9 @@ Blockly.WorkspaceSvg.prototype.setCachedParentSvgSize = function(width, height) 
   var svg = this.getParentSvg();
   if (width) {
     this.cachedParentSvgSize_.width = width;
-    // This is set to support the public (but deprecated) Blockly.svgSize method.
-    svg.cachedWidth_ = width;
   }
   if (height) {
     this.cachedParentSvgSize_.height = height;
-    // This is set to support the public (but deprecated) Blockly.svgSize method.
-    svg.cachedHeight_ = height;
   }
 };
 
@@ -1618,19 +1613,6 @@ Blockly.WorkspaceSvg.prototype.createVariable = function(name,
       this, name, opt_type, opt_id);
   this.refreshToolboxSelection();
   return newVar;
-};
-
-/**
- * Make a list of all the delete areas for this workspace.
- * @deprecated Use workspace.recordDragTargets. (2021 June)
- */
-Blockly.WorkspaceSvg.prototype.recordDeleteAreas = function() {
-  Blockly.utils.deprecation.warn(
-      'WorkspaceSvg.prototype.recordDeleteAreas',
-      'June 2021',
-      'June 2022',
-      'WorkspaceSvg.prototype.recordDragTargets');
-  this.recordDragTargets();
 };
 
 /**

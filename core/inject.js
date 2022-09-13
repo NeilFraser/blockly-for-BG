@@ -213,10 +213,6 @@ Blockly.extractObjectFromEvent_ = function(workspace, e) {
         object = object.getRootBlock();
       }
       break;
-    case Blockly.Events.COMMENT_CREATE:
-    case Blockly.Events.COMMENT_MOVE:
-      object = workspace.getCommentById(e.commentId);
-      break;
   }
   return object;
 };

@@ -523,11 +523,7 @@ Blockly.Toolbox.prototype.getClientRect = function() {
 
   // Assumes that the toolbox is on the SVG edge.  If this changes
   // (e.g. toolboxes in mutators) then this code will need to be more complex.
-  if (this.toolboxPosition == Blockly.utils.toolbox.Position.TOP) {
-    return new Blockly.utils.Rect(-BIG_NUM, bottom, -BIG_NUM, BIG_NUM);
-  } else if (this.toolboxPosition == Blockly.utils.toolbox.Position.BOTTOM) {
-    return new Blockly.utils.Rect(top, BIG_NUM, -BIG_NUM, BIG_NUM);
-  } else if (this.toolboxPosition == Blockly.utils.toolbox.Position.LEFT) {
+  if (this.toolboxPosition == Blockly.utils.toolbox.Position.LEFT) {
     return new Blockly.utils.Rect(-BIG_NUM, BIG_NUM, -BIG_NUM, right);
   } else {  // Right
     return new Blockly.utils.Rect(-BIG_NUM, BIG_NUM, left, BIG_NUM);
@@ -729,9 +725,7 @@ Blockly.Toolbox.prototype.handleToolboxItemResize = function() {
   var newX = this.toolboxPosition == Blockly.utils.toolbox.Position.LEFT ?
       workspace.scrollX + rect.width :
       workspace.scrollX;
-  var newY = this.toolboxPosition == Blockly.utils.toolbox.Position.TOP ?
-      workspace.scrollY + rect.height :
-      workspace.scrollY;
+  var newY = workspace.scrollY;
   workspace.translate(newX, newY);
 
   // Even though the div hasn't changed size, the visible workspace

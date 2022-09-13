@@ -19,7 +19,6 @@ goog.require('Blockly.ComponentManager');
 goog.require('Blockly.constants');
 goog.require('Blockly.Events');
 /** @suppress {extraRequire} */
-goog.require('Blockly.Events.CommentMove');
 goog.require('Blockly.utils');
 goog.require('Blockly.utils.Coordinate');
 
@@ -31,7 +30,7 @@ goog.requireType('Blockly.WorkspaceSvg');
 /**
  * Class for a bubble dragger.  It moves things on the bubble canvas around the
  * workspace when they are being dragged by a mouse or touch.  These can be
- * block comments, mutators, warnings, or workspace comments.
+ * block comments, mutators, or warnings.
  * @param {!Blockly.IBubble} bubble The item on the bubble canvas to drag.
  * @param {!Blockly.WorkspaceSvg} workspace The workspace to drag on.
  * @constructor
@@ -203,8 +202,6 @@ Blockly.BubbleDragger.prototype.endBubbleDrag = function(
   }
 
   if (this.wouldDeleteBubble_) {
-    // Fire a move event, so we know where to go back to for an undo.
-    this.fireMoveEvent_();
     this.draggingBubble_.dispose(false, true);
   } else {
     // Put everything back onto the bubble canvas.
@@ -214,27 +211,10 @@ Blockly.BubbleDragger.prototype.endBubbleDrag = function(
     if (this.draggingBubble_.setDragging) {
       this.draggingBubble_.setDragging(false);
     }
-    this.fireMoveEvent_();
   }
   this.workspace_.setResizesEnabled(true);
 
   Blockly.Events.setGroup(false);
-};
-
-/**
- * Fire a move event at the end of a bubble drag.
- * @private
- */
-Blockly.BubbleDragger.prototype.fireMoveEvent_ = function() {
-  if (this.draggingBubble_.isComment) {
-    var event = new (Blockly.Events.get(Blockly.Events.COMMENT_MOVE))(
-        /** @type {!Blockly.WorkspaceCommentSvg} */ (this.draggingBubble_));
-    event.setOldCoordinate(this.startXY_);
-    event.recordNew();
-    Blockly.Events.fire(event);
-  }
-  // TODO (fenichel): move events for comments.
-  return;
 };
 
 /**

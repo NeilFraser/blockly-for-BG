@@ -140,8 +140,6 @@ Blockly.Options = function(options) {
   this.zoomOptions = Blockly.Options.parseZoomOptions_(options);
   /** @type {!Blockly.utils.toolbox.Position} */
   this.toolboxPosition = toolboxPosition;
-  /** @type {!Blockly.Theme} */
-  this.theme = Blockly.Options.parseThemeOptions_(options);
   /** @type {string} */
   this.renderer = renderer;
   /** @type {?Object} */
@@ -348,39 +346,4 @@ Blockly.Options.parseGridOptions_ = function(options) {
       (grid['length'] === undefined) ? 1 : Number(grid['length']);
   gridOptions.snap = gridOptions.spacing > 0 && !!grid['snap'];
   return gridOptions;
-};
-
-/**
- * Parse the user-specified theme options, using the classic theme as a default.
- *   https://developers.google.com/blockly/guides/configure/web/themes
- * @param {!Object} options Dictionary of options.
- * @return {!Blockly.Theme} A Blockly Theme.
- * @private
- */
-Blockly.Options.parseThemeOptions_ = function(options) {
-  var theme = options['theme'] || Blockly.Themes.Classic;
-  if (typeof theme == 'string') {
-    return /** @type {!Blockly.Theme} */ (
-      Blockly.registry.getObject(Blockly.registry.Type.THEME, theme));
-  } else if (theme instanceof Blockly.Theme) {
-    return /** @type {!Blockly.Theme} */ (theme);
-  }
-  return Blockly.Theme.defineTheme(theme.name ||
-      ('builtin' + Blockly.utils.IdGenerator.getNextUniqueId()), theme);
-};
-
-/**
- * Parse the provided toolbox tree into a consistent DOM format.
- * @param {?Node|?string} toolboxDef DOM tree of blocks, or text representation
- *    of same.
- * @return {?Node} DOM tree of blocks, or null.
- * @deprecated Use Blockly.utils.toolbox.parseToolboxTree. (2020 September 28)
- */
-Blockly.Options.parseToolboxTree = function(toolboxDef) {
-  Blockly.utils.deprecation.warn(
-      'Blockly.Options.parseToolboxTree',
-      'September 2020',
-      'September 2021',
-      'Blockly.utils.toolbox.parseToolboxTree');
-  return Blockly.utils.toolbox.parseToolboxTree(toolboxDef);
 };

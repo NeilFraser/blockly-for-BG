@@ -126,14 +126,10 @@ Blockly.uiPosition.getStartPositionRect = function(
 Blockly.uiPosition.getCornerOppositeToolbox = function(workspace, metrics) {
   var leftCorner =
       metrics.toolboxMetrics.position !== Blockly.utils.toolbox.Position.LEFT;
-  var topCorner =
-      metrics.toolboxMetrics.position === Blockly.utils.toolbox.Position.BOTTOM;
   var horizontalPosition = leftCorner ?
       Blockly.uiPosition.horizontalPosition.LEFT :
       Blockly.uiPosition.horizontalPosition.RIGHT;
-  var verticalPosition = topCorner ?
-      Blockly.uiPosition.verticalPosition.TOP :
-      Blockly.uiPosition.verticalPosition.BOTTOM;
+  var verticalPosition = Blockly.uiPosition.verticalPosition.BOTTOM;
   return {
     horizontal: horizontalPosition,
     vertical: verticalPosition

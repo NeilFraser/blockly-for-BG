@@ -182,8 +182,6 @@ Blockly.utils.toolbox.FLYOUT_TOOLBOX_KIND = 'flyoutToolbox';
  * @enum {number}
  */
 Blockly.utils.toolbox.Position = {
-  TOP: 0,
-  BOTTOM: 1,
   LEFT: 2,
   RIGHT: 3
 };

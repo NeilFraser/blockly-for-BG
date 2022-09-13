@@ -394,16 +394,6 @@ Blockly.Xml.clearWorkspaceAndLoadFromXml = function(xml, workspace) {
  *     comments are not bundled in.
  */
 Blockly.Xml.domToWorkspace = function(xml, workspace) {
-  if (xml instanceof Blockly.Workspace) {
-    var swap = xml;
-    // Closure Compiler complains here because the arguments are reversed.
-    /** @suppress {checkTypes} */
-    xml = workspace;
-    workspace = swap;
-    console.warn('Deprecated call to Blockly.Xml.domToWorkspace, ' +
-                 'swap the arguments.');
-  }
-
   var width;  // Not used in LTR.
   if (workspace.RTL) {
     width = workspace.getWidth();
@@ -441,23 +431,6 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
         variablesFirst = false;
       } else if (name == 'shadow') {
         throw TypeError('Shadow block cannot be a top-level block.');
-      } else if (name == 'comment') {
-        if (workspace.rendered) {
-          if (!Blockly.WorkspaceCommentSvg) {
-            console.warn('Missing require for Blockly.WorkspaceCommentSvg, ' +
-                'ignoring workspace comment.');
-          } else {
-            Blockly.WorkspaceCommentSvg.fromXml(
-                xmlChildElement, workspace, width);
-          }
-        } else {
-          if (!Blockly.WorkspaceComment) {
-            console.warn('Missing require for Blockly.WorkspaceComment, ' +
-                'ignoring workspace comment.');
-          } else {
-            Blockly.WorkspaceComment.fromXml(xmlChildElement, workspace);
-          }
-        }
       } else if (name == 'variables') {
         if (variablesFirst) {
           Blockly.Xml.domToVariables(xmlChildElement, workspace);

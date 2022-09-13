@@ -20,15 +20,10 @@ goog.provide('Blockly.Constants.Variables');
 
 goog.require('Blockly');
 goog.require('Blockly.Blocks');
+goog.require('Blockly.Extensions');
 goog.require('Blockly.FieldLabel');
 goog.require('Blockly.FieldVariable');
 
-
-/**
- * Unused constant for the common HSV hue for all blocks in this category.
- * @deprecated Use Blockly.Msg['VARIABLES_HUE']. (2018 April 5)
- */
-Blockly.Constants.Variables.HUE = 330;
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for variable getter.
@@ -43,7 +38,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       }
     ],
     "output": null,
-    "style": "variable_blocks",
+    "colour": "%{BKY_VARIABLES_HUE}",
     "helpUrl": "%{BKY_VARIABLES_GET_HELPURL}",
     "tooltip": "%{BKY_VARIABLES_GET_TOOLTIP}",
     "extensions": ["contextMenu_variableSetterGetter"]
@@ -65,7 +60,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "style": "variable_blocks",
+    "colour": "%{BKY_VARIABLES_HUE}",
     "tooltip": "%{BKY_VARIABLES_SET_TOOLTIP}",
     "helpUrl": "%{BKY_VARIABLES_SET_HELPURL}",
     "extensions": ["contextMenu_variableSetterGetter"]

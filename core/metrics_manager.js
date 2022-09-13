@@ -179,21 +179,13 @@ Blockly.MetricsManager.prototype.getAbsoluteMetrics = function() {
       doesToolboxExist ? toolboxMetrics.position : flyoutMetrics.position;
 
   var atLeft = toolboxPosition == Blockly.utils.toolbox.Position.LEFT;
-  var atTop = toolboxPosition == Blockly.utils.toolbox.Position.TOP;
   if (doesToolboxExist && atLeft) {
     absoluteLeft = toolboxMetrics.width;
   } else if (doesFlyoutExist && atLeft) {
     absoluteLeft = flyoutMetrics.width;
   }
-  var absoluteTop = 0;
-  if (doesToolboxExist && atTop) {
-    absoluteTop = toolboxMetrics.height;
-  } else if (doesFlyoutExist && atTop) {
-    absoluteTop = flyoutMetrics.height;
-  }
-
   return {
-    top: absoluteTop,
+    top: 0,
     left: absoluteLeft,
   };
 };
@@ -219,18 +211,12 @@ Blockly.MetricsManager.prototype.getViewMetrics = function(
       doesToolboxExist ? toolboxMetrics.position : flyoutMetrics.position;
 
   if (this.workspace_.getToolbox()) {
-    if (toolboxPosition == Blockly.utils.toolbox.Position.TOP ||
-        toolboxPosition == Blockly.utils.toolbox.Position.BOTTOM) {
-      svgMetrics.height -= toolboxMetrics.height;
-    } else if (toolboxPosition == Blockly.utils.toolbox.Position.LEFT ||
+    if (toolboxPosition == Blockly.utils.toolbox.Position.LEFT ||
         toolboxPosition == Blockly.utils.toolbox.Position.RIGHT) {
       svgMetrics.width -= toolboxMetrics.width;
     }
   } else if (this.workspace_.getFlyout(true)) {
-    if (toolboxPosition == Blockly.utils.toolbox.Position.TOP ||
-        toolboxPosition == Blockly.utils.toolbox.Position.BOTTOM) {
-      svgMetrics.height -= flyoutMetrics.height;
-    } else if (toolboxPosition == Blockly.utils.toolbox.Position.LEFT ||
+    if (toolboxPosition == Blockly.utils.toolbox.Position.LEFT ||
         toolboxPosition == Blockly.utils.toolbox.Position.RIGHT) {
       svgMetrics.width -= flyoutMetrics.width;
     }

@@ -352,39 +352,7 @@ Blockly.ToolboxCategory.prototype.addColourBorder_ = function(colour) {
  * @protected
  */
 Blockly.ToolboxCategory.prototype.getColour_ = function(categoryDef) {
-  var styleName = categoryDef['categorystyle'] || categoryDef['categoryStyle'];
-  var colour = categoryDef['colour'];
-
-  if (colour && styleName) {
-    console.warn('Toolbox category "' + this.name_ +
-        '" must not have both a style and a colour');
-  } else if (styleName) {
-    return this.getColourfromStyle_(styleName);
-  } else {
-    return this.parseColour_(colour);
-  }
-  return '';
-};
-
-/**
- * Sets the colour for the category using the style name and returns the new
- * colour as a hex string.
- * @param {string} styleName Name of the style.
- * @return {string} The hex colour for the category.
- * @private
- */
-Blockly.ToolboxCategory.prototype.getColourfromStyle_ = function(styleName) {
-  var theme = this.workspace_.getTheme();
-  if (styleName && theme) {
-    var style = theme.categoryStyles[styleName];
-    if (style && style.colour) {
-      return this.parseColour_(style.colour);
-    } else {
-      console.warn('Style "' + styleName +
-          '" must exist and contain a colour value');
-    }
-  }
-  return '';
+  return this.parseColour_(categoryDef['colour']);
 };
 
 /**
