@@ -15,7 +15,6 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.math');  // Deprecated
 goog.provide('Blockly.Constants.Math');
 
 goog.require('Blockly');
@@ -25,9 +24,10 @@ goog.require('Blockly.FieldDropdown');
 goog.require('Blockly.FieldLabel');
 goog.require('Blockly.FieldNumber');
 goog.require('Blockly.FieldVariable');
+goog.require('Blockly.utils.xml');
 
 
-Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
+Blockly.defineBlocksWithJsonArray([
   // Block for numeric value.
   {
     "type": "math_number",
@@ -348,7 +348,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "tooltip": "%{BKY_MATH_ATAN2_TOOLTIP}",
     "helpUrl": "%{BKY_MATH_ATAN2_HELPURL}"
   }
-]);  // END JSON EXTRACT (Do not delete this comment.)
+]);
 
 /**
  * Mapping of math block OP value to tooltip message for blocks

@@ -19,6 +19,7 @@ goog.require('Blockly.FieldCheckbox');
 goog.require('Blockly.FieldLabel');
 goog.require('Blockly.FieldTextInput');
 goog.require('Blockly.Mutator');
+goog.require('Blockly.utils.xml');
 goog.require('Blockly.Warning');
 
 

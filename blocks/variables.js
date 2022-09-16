@@ -15,7 +15,6 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.variables');  // Deprecated.
 goog.provide('Blockly.Constants.Variables');
 
 goog.require('Blockly');
@@ -23,9 +22,10 @@ goog.require('Blockly.Blocks');
 goog.require('Blockly.Extensions');
 goog.require('Blockly.FieldLabel');
 goog.require('Blockly.FieldVariable');
+goog.require('Blockly.utils.xml');
 
 
-Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
+Blockly.defineBlocksWithJsonArray([
   // Block for variable getter.
   {
     "type": "variables_get",
@@ -65,7 +65,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "helpUrl": "%{BKY_VARIABLES_SET_HELPURL}",
     "extensions": ["contextMenu_variableSetterGetter"]
   }
-]);  // END JSON EXTRACT (Do not delete this comment.)
+]);
 
 /**
  * Mixin to add context menu items to create getter/setter blocks for this

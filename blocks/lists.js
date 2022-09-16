@@ -22,9 +22,10 @@ goog.require('Blockly.Blocks');
 goog.require('Blockly.FieldDropdown');
 goog.require('Blockly.FieldLabel');
 goog.require('Blockly.Mutator');
+goog.require('Blockly.utils.xml');
 
 
-Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
+Blockly.defineBlocksWithJsonArray([
   // Block for creating an empty list
   // The 'list_create_with' block is preferred as it is more flexible.
   // <block type="lists_create_with">
@@ -107,7 +108,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "tooltip": "%{BKY_LISTS_LENGTH_TOOLTIP}",
     "helpUrl": "%{BKY_LISTS_LENGTH_HELPURL}"
   }
-]);  // END JSON EXTRACT (Do not delete this comment.)
+]);
 
 Blockly.Blocks['lists_create_with'] = {
   /**
@@ -736,23 +737,23 @@ Blockly.Blocks['lists_sort'] = {
    */
   init: function() {
     this.jsonInit({
-      "message0": Blockly.Msg['LISTS_SORT_TITLE'],
+      "message0": "%{BKY_LISTS_SORT_TITLE}",
       "args0": [
         {
           "type": "field_dropdown",
           "name": "TYPE",
           "options": [
-            [Blockly.Msg['LISTS_SORT_TYPE_NUMERIC'], "NUMERIC"],
-            [Blockly.Msg['LISTS_SORT_TYPE_TEXT'], "TEXT"],
-            [Blockly.Msg['LISTS_SORT_TYPE_IGNORECASE'], "IGNORE_CASE"]
+            ["%{BKY_LISTS_SORT_TYPE_NUMERIC}", "NUMERIC"],
+            ["%{BKY_LISTS_SORT_TYPE_TEXT}", "TEXT"],
+            ["%{BKY_LISTS_SORT_TYPE_IGNORECASE}", "IGNORE_CASE"]
           ]
         },
         {
           "type": "field_dropdown",
           "name": "DIRECTION",
           "options": [
-            [Blockly.Msg['LISTS_SORT_ORDER_ASCENDING'], "1"],
-            [Blockly.Msg['LISTS_SORT_ORDER_DESCENDING'], "-1"]
+            ["%{BKY_LISTS_SORT_ORDER_ASCENDING}", "1"],
+            ["%{BKY_LISTS_SORT_ORDER_DESCENDING}", "-1"]
           ]
         },
         {
@@ -763,8 +764,8 @@ Blockly.Blocks['lists_sort'] = {
       ],
       "output": "Array",
       "colour": "%{BKY_LISTS_HUE}",
-      "tooltip": Blockly.Msg['LISTS_SORT_TOOLTIP'],
-      "helpUrl": Blockly.Msg['LISTS_SORT_HELPURL']
+      "tooltip": "%{BKY_LISTS_SORT_TOOLTIP}",
+      "helpUrl": "%{BKY_LISTS_SORT_HELPURL}"
     });
   }
 };

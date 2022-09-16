@@ -15,7 +15,6 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.loops');  // Deprecated
 goog.provide('Blockly.Constants.Loops');
 
 goog.require('Blockly');
@@ -25,10 +24,11 @@ goog.require('Blockly.FieldDropdown');
 goog.require('Blockly.FieldLabel');
 goog.require('Blockly.FieldNumber');
 goog.require('Blockly.FieldVariable');
+goog.require('Blockly.utils.xml');
 goog.require('Blockly.Warning');
 
 
-Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
+Blockly.defineBlocksWithJsonArray([
   // Block for repeat n times (external number).
   {
     "type": "controls_repeat_ext",
@@ -196,7 +196,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       "controls_flow_in_loop_check"
     ]
   }
-]);  // END JSON EXTRACT (Do not delete this comment.)
+]);
 
 /**
  * Tooltips for the 'controls_whileUntil' block, keyed by MODE value.

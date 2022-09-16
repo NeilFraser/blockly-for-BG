@@ -15,7 +15,6 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.colour');  // Deprecated
 goog.provide('Blockly.Constants.Colour');
 
 goog.require('Blockly');
@@ -24,7 +23,7 @@ goog.require('Blockly.FieldColour');
 goog.require('Blockly.FieldLabel');
 
 
-Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
+Blockly.defineBlocksWithJsonArray([
   // Block for colour picker.
   {
     "type": "colour_picker",
@@ -113,4 +112,4 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "colour": "%{BKY_COLOUR_HUE}",
     "tooltip": "%{BKY_COLOUR_BLEND_TOOLTIP}"
   }
-]);  // END JSON EXTRACT (Do not delete this comment.)
+]);

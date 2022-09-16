@@ -15,7 +15,6 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.logic');  // Deprecated
 goog.provide('Blockly.Constants.Logic');
 
 goog.require('Blockly');
@@ -24,9 +23,10 @@ goog.require('Blockly.Extensions');
 goog.require('Blockly.FieldDropdown');
 goog.require('Blockly.FieldLabel');
 goog.require('Blockly.Mutator');
+goog.require('Blockly.utils.xml');
 
 
-Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
+Blockly.defineBlocksWithJsonArray([
   // Block for boolean data type: true and false.
   {
     "type": "logic_boolean",
@@ -180,7 +180,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "helpUrl": "%{BKY_LOGIC_TERNARY_HELPURL}",
     "extensions": ["logic_ternary"]
   }
-]);  // END JSON EXTRACT (Do not delete this comment.)
+]);
 
 Blockly.defineBlocksWithJsonArray([ // Mutator blocks. Do not extract.
   // Block representing the if statement in the controls_if mutator.
