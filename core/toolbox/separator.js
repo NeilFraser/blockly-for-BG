@@ -18,6 +18,7 @@ goog.require('Blockly.IToolboxItem');
 goog.require('Blockly.registry');
 goog.require('Blockly.ToolboxItem');
 goog.require('Blockly.utils.dom');
+goog.require('Blockly.utils.object');
 
 goog.requireType('Blockly.IToolbox');
 goog.requireType('Blockly.utils.toolbox');

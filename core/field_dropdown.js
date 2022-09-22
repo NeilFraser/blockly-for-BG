@@ -207,7 +207,7 @@ Blockly.FieldDropdown.IMAGE_Y_PADDING =
  * Android can't (in 2014) display "▾", so use "▼" instead.
  */
 Blockly.FieldDropdown.ARROW_CHAR =
-    Blockly.utils.userAgent.ANDROID ? '▾' : '▼';
+    Blockly.utils.userAgent.ANDROID ? '▼' : '▾';
 
 /**
  * Mouse cursor style when over the hotspot that initiates the editor.

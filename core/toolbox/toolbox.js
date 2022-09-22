@@ -14,7 +14,6 @@ goog.provide('Blockly.Toolbox');
 
 goog.require('Blockly.BlockSvg');
 goog.require('Blockly.browserEvents');
-goog.require('Blockly.CollapsibleToolboxCategory');
 goog.require('Blockly.ComponentManager');
 /** @suppress {extraRequire} */
 goog.require('Blockly.constants');
@@ -24,26 +23,29 @@ goog.require('Blockly.Events');
 /** @suppress {extraRequire} */
 goog.require('Blockly.Events.ToolboxItemSelect');
 goog.require('Blockly.IAutoHideable');
+goog.require('Blockly.ICollapsibleToolboxItem');
 goog.require('Blockly.IKeyboardAccessible');
 goog.require('Blockly.IStyleable');
 goog.require('Blockly.IToolbox');
 goog.require('Blockly.Options');
 goog.require('Blockly.registry');
+goog.require('Blockly.ToolboxCategory');
+goog.require('Blockly.ToolboxItem');
+goog.require('Blockly.ToolboxSeparator');
 goog.require('Blockly.Touch');
 goog.require('Blockly.utils');
 goog.require('Blockly.utils.aria');
 goog.require('Blockly.utils.dom');
+goog.require('Blockly.utils.object');
 goog.require('Blockly.utils.Rect');
 goog.require('Blockly.utils.toolbox');
 
-goog.requireType('Blockly.ICollapsibleToolboxItem');
 goog.requireType('Blockly.IDraggable');
 goog.requireType('Blockly.IFlyout');
 goog.requireType('Blockly.ISelectableToolboxItem');
 goog.requireType('Blockly.IToolboxItem');
 goog.requireType('Blockly.ShortcutRegistry');
 goog.requireType('Blockly.WorkspaceSvg');
-
 
 /**
  * Class for a Toolbox.
@@ -428,14 +430,6 @@ Blockly.Toolbox.prototype.renderContents_ = function(toolboxDef) {
  */
 Blockly.Toolbox.prototype.createToolboxItem_ = function(toolboxItemDef, fragment) {
   var registryName = toolboxItemDef['kind'];
-
-  // Categories that are collapsible are created using a class registered under
-  // a different name.
-  if (registryName.toUpperCase() == 'CATEGORY' &&
-      Blockly.utils.toolbox.isCategoryCollapsible(
-      /** @type {!Blockly.utils.toolbox.CategoryInfo} */(toolboxItemDef))) {
-    registryName = Blockly.CollapsibleToolboxCategory.registrationName;
-  }
 
   var ToolboxItemClass = Blockly.registry.getClass(
       Blockly.registry.Type.TOOLBOX_ITEM, registryName.toLowerCase());
