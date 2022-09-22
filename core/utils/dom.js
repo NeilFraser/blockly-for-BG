@@ -102,12 +102,13 @@ Blockly.utils.dom.createSvgElement = function(name, attrs, opt_parent) {
 };
 
 /**
- * Add a CSS class to a element.
+ * Add a CSS class to a element.  Handles SVG elements in IE.
  * @param {!Element} element DOM element to add class to.
  * @param {string} className Name of class to add.
  */
 Blockly.utils.dom.addClass = function(element, className) {
-  element.classList.add(className);
+  var classes = element.getAttribute('class') || '';
+  element.setAttribute('class', classes + ' ' + className);
 };
 
 /**
@@ -119,27 +120,41 @@ Blockly.utils.dom.addClass = function(element, className) {
 Blockly.utils.dom.removeClasses = function(element, classNames) {
   var classList = classNames.split(' ');
   for (var i = 0; i < classList.length; i++) {
-    element.classList.remove(classList[i]);
+    Blockly.utils.dom.removeClass(element, classList[i]);
   }
 };
 
 /**
- * Remove a CSS class from a element.
+ * Remove a CSS class from a element.  Handles SVG elements in IE.
  * @param {!Element} element DOM element to remove class from.
  * @param {string} className Name of class to remove.
+ * @return {boolean} True if class was removed, false if never present.
  */
 Blockly.utils.dom.removeClass = function(element, className) {
-  element.classList.remove(className);
+  var classes = element.getAttribute('class') || '';
+  var classList = classes.split(/\s+/);
+  for (var i = 0; i < classList.length; i++) {
+    if (!classList[i] || classList[i] == className) {
+      classList.splice(i, 1);
+      i--;
+    }
+  }
+  if (classList.length) {
+    element.setAttribute('class', classList.join(' '));
+  } else {
+    element.removeAttribute('class');
+  }
 };
 
 /**
- * Checks if an element has the specified CSS class.
+ * Does an element have the specified CSS class?  Handles SVG elements in IE.
  * @param {!Element} element DOM element to check.
  * @param {string} className Name of class to check.
  * @return {boolean} True if class exists, false otherwise.
  */
 Blockly.utils.dom.hasClass = function(element, className) {
-  return element.classList.contains(className);
+  var classes = element.getAttribute('class') || '';
+  return (' ' + classes + ' ').indexOf(' ' + className + ' ') != -1;
 };
 
 /**
