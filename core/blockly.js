@@ -409,75 +409,6 @@ Blockly.hueToHex = function(hue) {
 };
 
 /**
- * Checks old colour constants are not overwritten by the host application.
- * If a constant is overwritten, it prints a console warning directing the
- * developer to use the equivalent Msg constant.
- * @package
- */
-Blockly.checkBlockColourConstants = function() {
-  Blockly.checkBlockColourConstant_(
-      'LOGIC_HUE', ['Blocks', 'logic', 'HUE'], undefined);
-  Blockly.checkBlockColourConstant_(
-      'LOGIC_HUE', ['Constants', 'Logic', 'HUE'], 210);
-  Blockly.checkBlockColourConstant_(
-      'LOOPS_HUE', ['Blocks', 'loops', 'HUE'], undefined);
-  Blockly.checkBlockColourConstant_(
-      'LOOPS_HUE', ['Constants', 'Loops', 'HUE'], 120);
-  Blockly.checkBlockColourConstant_(
-      'MATH_HUE', ['Blocks', 'math', 'HUE'], undefined);
-  Blockly.checkBlockColourConstant_(
-      'MATH_HUE', ['Constants', 'Math', 'HUE'], 230);
-  Blockly.checkBlockColourConstant_(
-      'TEXTS_HUE', ['Blocks', 'texts', 'HUE'], undefined);
-  Blockly.checkBlockColourConstant_(
-      'TEXTS_HUE', ['Constants', 'Text', 'HUE'], 160);
-  Blockly.checkBlockColourConstant_(
-      'LISTS_HUE', ['Blocks', 'lists', 'HUE'], undefined);
-  Blockly.checkBlockColourConstant_(
-      'LISTS_HUE', ['Constants', 'Lists', 'HUE'], 260);
-  Blockly.checkBlockColourConstant_(
-      'COLOUR_HUE', ['Blocks', 'colour', 'HUE'], undefined);
-  Blockly.checkBlockColourConstant_(
-      'COLOUR_HUE', ['Constants', 'Colour', 'HUE'], 20);
-  Blockly.checkBlockColourConstant_(
-      'VARIABLES_HUE', ['Blocks', 'variables', 'HUE'], undefined);
-  Blockly.checkBlockColourConstant_(
-      'VARIABLES_HUE', ['Constants', 'Variables', 'HUE'], 330);
-  Blockly.checkBlockColourConstant_(
-      'PROCEDURES_HUE', ['Blocks', 'procedures', 'HUE'], undefined);
-  // Blockly.Constants.Procedures.HUE never existed.
-};
-
-/**
- * Checks for a constant in the Blockly namespace, verifying it is undefined or
- * has the old/original value. Prints a warning if this is not true.
- * @param {string} msgName The Msg constant identifier.
- * @param {!Array<string>} blocklyNamePath The name parts of the tested
- *     constant.
- * @param {number|undefined} expectedValue The expected value of the constant.
- * @private
- */
-Blockly.checkBlockColourConstant_ = function(
-    msgName, blocklyNamePath, expectedValue) {
-  var namePath = 'Blockly';
-  var value = Blockly;
-  for (var i = 0; i < blocklyNamePath.length; ++i) {
-    namePath += '.' + blocklyNamePath[i];
-    if (value) {
-      value = value[blocklyNamePath[i]];
-    }
-  }
-
-  if (value && value !== expectedValue) {
-    var warningPattern = (expectedValue === undefined) ?
-        '%1 has been removed. Use Blockly.Msg["%2"].' :
-        '%1 is deprecated and unused. Override Blockly.Msg["%2"].';
-    var warning = warningPattern.replace('%1', namePath).replace('%2', msgName);
-    console.warn(warning);
-  }
-};
-
-/**
  * Set the parent container.  This is the container element that the WidgetDiv,
  * DropDownDiv, and Tooltip are rendered into the first time `Blockly.inject`
  * is called.
@@ -489,21 +420,6 @@ Blockly.setParentContainer = function(container) {
 };
 
 /** Aliases. */
-
-/**
- * @see Blockly.browserEvents.bind
- */
-Blockly.bindEvent_ = Blockly.browserEvents.bind;
-
-/**
- * @see Blockly.browserEvents.unbind
- */
-Blockly.unbindEvent_ = Blockly.browserEvents.unbind;
-
-/**
- * @see Blockly.browserEvents.conditionalBind
- */
-Blockly.bindEventWithChecks_ = Blockly.browserEvents.conditionalBind;
 
 /**
  * @see Blockly.constants.ALIGN.LEFT
