@@ -103,21 +103,11 @@ Blockly.utils.dom.createSvgElement = function(name, attrs, opt_parent) {
 
 /**
  * Add a CSS class to a element.
- * Similar to Closure's goog.dom.classes.add, except it handles SVG elements.
  * @param {!Element} element DOM element to add class to.
  * @param {string} className Name of class to add.
- * @return {boolean} True if class was added, false if already present.
  */
 Blockly.utils.dom.addClass = function(element, className) {
-  var classes = element.getAttribute('class') || '';
-  if ((' ' + classes + ' ').indexOf(' ' + className + ' ') != -1) {
-    return false;
-  }
-  if (classes) {
-    classes += ' ';
-  }
-  element.setAttribute('class', classes + className);
-  return true;
+  element.classList.add(className);
 };
 
 /**
@@ -129,48 +119,27 @@ Blockly.utils.dom.addClass = function(element, className) {
 Blockly.utils.dom.removeClasses = function(element, classNames) {
   var classList = classNames.split(' ');
   for (var i = 0; i < classList.length; i++) {
-    var cssName = classList[i];
-    Blockly.utils.dom.removeClass(element, cssName);
+    element.classList.remove(classList[i]);
   }
 };
 
 /**
  * Remove a CSS class from a element.
- * Similar to Closure's goog.dom.classes.remove, except it handles SVG elements.
  * @param {!Element} element DOM element to remove class from.
  * @param {string} className Name of class to remove.
- * @return {boolean} True if class was removed, false if never present.
  */
 Blockly.utils.dom.removeClass = function(element, className) {
-  var classes = element.getAttribute('class');
-  if ((' ' + classes + ' ').indexOf(' ' + className + ' ') == -1) {
-    return false;
-  }
-  var classList = classes.split(/\s+/);
-  for (var i = 0; i < classList.length; i++) {
-    if (!classList[i] || classList[i] == className) {
-      classList.splice(i, 1);
-      i--;
-    }
-  }
-  if (classList.length) {
-    element.setAttribute('class', classList.join(' '));
-  } else {
-    element.removeAttribute('class');
-  }
-  return true;
+  element.classList.remove(className);
 };
 
 /**
  * Checks if an element has the specified CSS class.
- * Similar to Closure's goog.dom.classes.has, except it handles SVG elements.
  * @param {!Element} element DOM element to check.
  * @param {string} className Name of class to check.
  * @return {boolean} True if class exists, false otherwise.
  */
 Blockly.utils.dom.hasClass = function(element, className) {
-  var classes = element.getAttribute('class');
-  return (' ' + classes + ' ').indexOf(' ' + className + ' ') != -1;
+  return element.classList.contains(className);
 };
 
 /**
