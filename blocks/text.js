@@ -113,7 +113,7 @@ Blockly.Constants.Text.QUOTE_IMAGE_MIXIN = {
         dataUri,
         this.QUOTE_IMAGE_WIDTH,
         this.QUOTE_IMAGE_HEIGHT,
-        isLeft ? '\u201C' : '\u201D');
+        isLeft ? '“' : '”');
   }
 };
 

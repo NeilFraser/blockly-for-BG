@@ -146,12 +146,12 @@ Blockly.defineBlocksWithJsonArray([
         "type": "field_dropdown",
         "name": "CONSTANT",
         "options": [
-          ["\u03c0", "PI"],
+          ["π", "PI"],
           ["e", "E"],
-          ["\u03c6", "GOLDEN_RATIO"],
+          ["φ", "GOLDEN_RATIO"],
           ["sqrt(2)", "SQRT2"],
-          ["sqrt(\u00bd)", "SQRT1_2"],
-          ["\u221e", "INFINITY"]
+          ["sqrt(½)", "SQRT1_2"],
+          ["∞", "INFINITY"]
         ]
       }
     ],

@@ -738,12 +738,12 @@ Blockly.Field.prototype.getDisplayText_ = function() {
   }
   if (text.length > this.maxDisplayLength) {
     // Truncate displayed string and add an ellipsis ('...').
-    text = text.substring(0, this.maxDisplayLength - 2) + '\u2026';
+    text = text.substring(0, this.maxDisplayLength - 2) + '…';
   }
   // Replace whitespace with non-breaking spaces so the text doesn't collapse.
   text = text.replace(/\s/g, Blockly.Field.NBSP);
   if (this.sourceBlock_ && this.sourceBlock_.RTL) {
-    // The SVG is LTR, force text to be RTL.
+    // The SVG is LTR, force text to be RTL by adding an RLM.
     text += '\u200F';
   }
   return text;

@@ -250,7 +250,7 @@ Blockly.FieldAngle.prototype.initView = function() {
   // Add the degree symbol to the left of the number, even in RTL (issue #2380)
   this.symbol_ = Blockly.utils.dom.createSvgElement(
       Blockly.utils.Svg.TSPAN, {}, null);
-  this.symbol_.appendChild(document.createTextNode('\u00B0'));
+  this.symbol_.appendChild(document.createTextNode('°'));
   this.textElement_.appendChild(this.symbol_);
 };
 

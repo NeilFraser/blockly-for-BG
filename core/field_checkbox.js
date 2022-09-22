@@ -71,7 +71,7 @@ Blockly.FieldCheckbox.fromJson = function(options) {
  * @type {string}
  * @const
  */
-Blockly.FieldCheckbox.CHECK_CHAR = '\u2713';
+Blockly.FieldCheckbox.CHECK_CHAR = '✓';
 
 /**
  * Serializable fields are saved by the XML renderer, non-serializable fields
