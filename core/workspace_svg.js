@@ -736,8 +736,8 @@ Blockly.WorkspaceSvg.prototype.getSvgXY = function(element) {
   var x = 0;
   var y = 0;
   var scale = 1;
-  if (Blockly.utils.dom.containsNode(this.getCanvas(), element) ||
-      Blockly.utils.dom.containsNode(this.getBubbleCanvas(), element)) {
+  if (this.getCanvas().contains(element) ||
+      this.getBubbleCanvas().contains(element)) {
     // Before the SVG canvas, scale the coordinates.
     scale = this.scale;
   }

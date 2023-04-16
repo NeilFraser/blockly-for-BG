@@ -49,8 +49,8 @@ Blockly.inject = function(container, opt_options) {
         document.querySelector(container);
   }
   // Verify that the container is in document.
-  if (!container || !Blockly.utils.dom.containsNode(document, container)) {
-    throw Error('Error: container is not in current document.');
+  if (!document.contains(container)) {
+    throw Error('Error: container is not in current document');
   }
   var options = new Blockly.Options(opt_options ||
     (/** @type {!Blockly.BlocklyOptions} */ ({})));

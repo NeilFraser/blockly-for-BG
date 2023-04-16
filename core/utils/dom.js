@@ -41,18 +41,6 @@ Blockly.utils.dom.HTML_NS = 'http://www.w3.org/1999/xhtml';
 Blockly.utils.dom.XLINK_NS = 'http://www.w3.org/1999/xlink';
 
 /**
- * Node type constants.
- * https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType
- * @enum {number}
- */
-Blockly.utils.dom.NodeType = {
-  ELEMENT_NODE: 1,
-  TEXT_NODE: 3,
-  COMMENT_NODE: 8,
-  DOCUMENT_POSITION_CONTAINED_BY: 16
-};
-
-/**
  * Temporary cache of text widths.
  * @type {Object}
  * @private
@@ -184,17 +172,6 @@ Blockly.utils.dom.insertAfter = function(newNode, refNode) {
   } else {
     parentNode.appendChild(newNode);
   }
-};
-
-/**
- * Whether a node contains another node.
- * @param {!Node} parent The node that should contain the other node.
- * @param {!Node} descendant The node to test presence of.
- * @return {boolean} Whether the parent node contains the descendant node.
- */
-Blockly.utils.dom.containsNode = function(parent, descendant) {
-  return !!(parent.compareDocumentPosition(descendant) &
-            Blockly.utils.dom.NodeType.DOCUMENT_POSITION_CONTAINED_BY);
 };
 
 /**

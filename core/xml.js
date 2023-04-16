@@ -217,7 +217,7 @@ Blockly.Xml.blockToDom = function(block, opt_noId) {
       }
       if (childBlock) {
         var elem = Blockly.Xml.blockToDom(childBlock, opt_noId);
-        if (elem.nodeType == Blockly.utils.dom.NodeType.ELEMENT_NODE) {
+        if (elem.nodeType == Node.ELEMENT_NODE) {
           container.appendChild(elem);
           empty = false;
         }
@@ -251,7 +251,7 @@ Blockly.Xml.blockToDom = function(block, opt_noId) {
   var nextBlock = block.getNextBlock();
   if (nextBlock) {
     var elem = Blockly.Xml.blockToDom(nextBlock, opt_noId);
-    if (elem.nodeType == Blockly.utils.dom.NodeType.ELEMENT_NODE) {
+    if (elem.nodeType == Node.ELEMENT_NODE) {
       var container = Blockly.utils.xml.createElement('next');
       container.appendChild(elem);
       element.appendChild(container);
@@ -289,7 +289,7 @@ Blockly.Xml.cloneShadow_ = function(shadow, opt_noId) {
       while (node && !node.nextSibling) {
         textNode = node;
         node = node.parentNode;
-        if (textNode.nodeType == Blockly.utils.dom.NodeType.TEXT_NODE &&
+        if (textNode.nodeType == Node.TEXT_NODE &&
             textNode.data.trim() == '' && node.firstChild != textNode) {
           // Prune whitespace after a tag.
           Blockly.utils.dom.removeNode(textNode);
@@ -298,7 +298,7 @@ Blockly.Xml.cloneShadow_ = function(shadow, opt_noId) {
       if (node) {
         textNode = node;
         node = node.nextSibling;
-        if (textNode.nodeType == Blockly.utils.dom.NodeType.TEXT_NODE &&
+        if (textNode.nodeType == Node.TEXT_NODE &&
             textNode.data.trim() == '') {
           // Prune whitespace before a tag.
           Blockly.utils.dom.removeNode(textNode);
@@ -585,7 +585,7 @@ Blockly.Xml.domToBlock = function(xmlBlock, workspace) {
  */
 Blockly.Xml.domToVariables = function(xmlVariables, workspace) {
   for (var i = 0, xmlChild; (xmlChild = xmlVariables.childNodes[i]); i++) {
-    if (xmlChild.nodeType != Blockly.utils.dom.NodeType.ELEMENT_NODE) {
+    if (xmlChild.nodeType != Node.ELEMENT_NODE) {
       continue;  // Skip text nodes.
     }
     var type = xmlChild.getAttribute('type');
@@ -622,7 +622,7 @@ Blockly.Xml.mapSupportedXmlTags_ = function(xmlBlock) {
     next: []
   };
   for (var i = 0, xmlChild; (xmlChild = xmlBlock.childNodes[i]); i++) {
-    if (xmlChild.nodeType == Blockly.utils.dom.NodeType.TEXT_NODE) {
+    if (xmlChild.nodeType == Node.TEXT_NODE) {
       // Ignore any text at the <block> level.  It's all whitespace anyway.
       continue;
     }
@@ -747,7 +747,7 @@ Blockly.Xml.applyFieldTagNodes_ = function(xmlChildren, block) {
 Blockly.Xml.findChildBlocks_ = function(xmlNode) {
   var childBlockInfo = {childBlockElement: null, childShadowElement: null};
   for (var i = 0, xmlChild; (xmlChild = xmlNode.childNodes[i]); i++) {
-    if (xmlChild.nodeType == Blockly.utils.dom.NodeType.ELEMENT_NODE) {
+    if (xmlChild.nodeType == Node.ELEMENT_NODE) {
       if (xmlChild.nodeName.toLowerCase() == 'block') {
         childBlockInfo.childBlockElement = /** @type {!Element} */ (xmlChild);
       } else if (xmlChild.nodeName.toLowerCase() == 'shadow') {
