@@ -34,8 +34,6 @@ goog.require('Blockly.WidgetDiv');
  *    changes to the field's value. Takes in a number & returns a
  *    validated number, or null to abort the change.
  * @param {Object=} opt_config A map of options used to configure the field.
- *    See the [field creation documentation]{@link https://developers.google.com/blockly/guides/create-custom-blocks/fields/built-in-fields/angle#creation}
- *    for a list of properties this parameter supports.
  * @extends {Blockly.FieldTextInput}
  * @constructor
  */
@@ -187,59 +185,6 @@ Blockly.FieldAngle.WRAP = 360;
  */
 Blockly.FieldAngle.RADIUS = Blockly.FieldAngle.HALF - 1;
 
-/**
- * Configure the field based on the given map of options.
- * @param {!Object} config A map of options to configure the field based on.
- * @protected
- * @override
- */
-Blockly.FieldAngle.prototype.configure_ = function(config) {
-  Blockly.FieldAngle.superClass_.configure_.call(this, config);
-
-  switch (config['mode']) {
-    case 'compass':
-      this.clockwise_ = true;
-      this.offset_ = 90;
-      break;
-    case 'protractor':
-      // This is the default mode, so we could do nothing. But just to
-      // future-proof, we'll set it anyway.
-      this.clockwise_ = false;
-      this.offset_ = 0;
-      break;
-  }
-
-  // Allow individual settings to override the mode setting.
-  var clockwise = config['clockwise'];
-  if (typeof clockwise == 'boolean') {
-    this.clockwise_ = clockwise;
-  }
-
-  // If these are passed as null then we should leave them on the default.
-  var offset = config['offset'];
-  if (offset != null) {
-    offset = Number(offset);
-    if (!isNaN(offset)) {
-      this.offset_ = offset;
-    }
-  }
-  var wrap = config['wrap'];
-  if (wrap != null) {
-    wrap = Number(wrap);
-    if (!isNaN(wrap)) {
-      this.wrap_ = wrap;
-    }
-  }
-  var round = config['round'];
-  if (round != null) {
-    round = Number(round);
-    if (!isNaN(round)) {
-      this.round_ = round;
-    }
-  }
-};
-
-
 
 /**
  * Create the block UI for this field.
@@ -303,8 +248,8 @@ Blockly.FieldAngle.prototype.dropdownCreate_ = function() {
         'version': '1.1',
         'height': (Blockly.FieldAngle.HALF * 2) + 'px',
         'width': (Blockly.FieldAngle.HALF * 2) + 'px',
-        'style': 'touch-action: none'
       }, null);
+      svg.style.touchAction = 'none';
   var circle = Blockly.utils.dom.createSvgElement(
       Blockly.utils.Svg.CIRCLE, {
         'cx': Blockly.FieldAngle.HALF,

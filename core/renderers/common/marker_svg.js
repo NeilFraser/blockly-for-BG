@@ -582,7 +582,7 @@ Blockly.blockRendering.MarkerSvg.prototype.getBlinkProperties_ = function() {
     'attributeName': 'fill',
     'dur': '1s',
     'values': this.colour_ + ';transparent;transparent;',
-    'repeatCount': 'indefinite'
+    'repeatCount': 'indefinite',
   };
 };
 
@@ -606,7 +606,7 @@ Blockly.blockRendering.MarkerSvg.prototype.createDomInternal_ = function() {
       Blockly.utils.Svg.G,
       {
         'width': this.constants_.CURSOR_WS_WIDTH,
-        'height': this.constants_.WS_CURSOR_HEIGHT
+        'height': this.constants_.WS_CURSOR_HEIGHT,
       }, this.svgGroup_);
 
   // A horizontal line used to represent a workspace coordinate or next
@@ -616,7 +616,6 @@ Blockly.blockRendering.MarkerSvg.prototype.createDomInternal_ = function() {
       {
         'width': this.constants_.CURSOR_WS_WIDTH,
         'height': this.constants_.WS_CURSOR_HEIGHT,
-        'style': 'display: none'
       },
       this.markerSvg_);
 
@@ -626,7 +625,6 @@ Blockly.blockRendering.MarkerSvg.prototype.createDomInternal_ = function() {
       {
         'class': 'blocklyVerticalMarker',
         'rx': 10, 'ry': 10,
-        'style': 'display: none'
       },
       this.markerSvg_);
 
@@ -635,7 +633,6 @@ Blockly.blockRendering.MarkerSvg.prototype.createDomInternal_ = function() {
       Blockly.utils.Svg.PATH,
       {
         'transform': '',
-        'style': 'display: none'
       },
       this.markerSvg_);
 
@@ -645,11 +642,12 @@ Blockly.blockRendering.MarkerSvg.prototype.createDomInternal_ = function() {
       Blockly.utils.Svg.PATH,
       {
         'transform': '',
-        'style': 'display: none',
         'fill': 'none',
-        'stroke-width': this.constants_.CURSOR_STROKE_WIDTH
+        'stroke-width': this.constants_.CURSOR_STROKE_WIDTH,
       },
       this.markerSvg_);
+
+  this.hide();
 
   // Markers and stack markers don't blink.
   if (this.isCursor()) {
